@@ -33,6 +33,10 @@ call vundle#begin()
     Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
     Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 
+    "-------------------=== Template support ===--------------------
+    Plugin 'drbeco/vimtemplates'                " for program templates
+    Plugin 'vim-scripts/DoxygenToolkit.vim'     " For Doxygen support
+
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
@@ -76,9 +80,9 @@ set incsearch                                   " highlights pattern matches whi
 set hlsearch                                    " highlights all pattern matches
 nnoremap <CR> :noh<CR><CR>:<backspace>
 
-"=====================================================
-"" Tabs / Buffers settings
-"=====================================================
+" =============================================================================
+" Tabs / Buffers settings
+" =============================================================================
 tab sball
 set switchbuf=useopen
 set laststatus=2
@@ -86,34 +90,42 @@ nmap <F9> :bprev<CR>
 nmap <F10> :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
-"=====================================================
-"" AirLine settings
-"=====================================================
+" =============================================================================
+" AirLine settings
+" =============================================================================
 let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
 
-"=====================================================
-"" TagBar settings
-"=====================================================
+" =============================================================================
+" TagBar and ctags settings
+" =============================================================================
 let g:tagbar_autofocus=0
-let g:tagbar_width=42
-autocmd BufEnter *.py :call tagbar#autoopen(0)
+let g:tagbar_width=40
+nmap <F8> :TagbarOpeni<CR>
 
-"=====================================================
-"" NERDTree settings
-"=====================================================
+" =============================================================================
+" NERDTree settings
+" =============================================================================
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NERDTree
 let NERDTreeWinSize=40
 autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
 nmap " :NERDTreeToggle<CR>
 
-"=====================================================
-"" SnipMate settings
-"=====================================================
+" =============================================================================
+" SnipMate settings
+" =============================================================================
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
 let g:snipMate = {'snippet_version' : 1}
+
+" =============================================================================
+" Template settings
+" =============================================================================
+let g:DoxygenToolkit_authorName="Thomas Roomes"
+let g:VIMFILESDIR="~/.vim/"
+let g:author="Thomas Roomes"
+let g:email="tdr-gh@tmmt-eng.co.za"
 
 "=====================================================
 "" Riv.vim settings
